@@ -1,0 +1,254 @@
+/* CountdownScreen.css - Responsive Version */
+.countdown-screen {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    text-align: center;
+    color: white;
+    overflow: hidden;
+  }
+  
+  .countdown-3 {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  }
+  
+  .countdown-2 {
+    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+  }
+  
+  .countdown-1 {
+    background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+  }
+  
+  .countdown-number {
+    font-size: clamp(5rem, 20vw, 10rem);
+    font-weight: bold;
+    margin-bottom: 1rem;
+    text-shadow: 0 0 30px rgba(255, 255, 255, 0.5);
+    animation: pulse 2s infinite;
+    line-height: 1;
+  }
+  
+  @keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+  }
+  
+  .countdown-screen h1 {
+    font-size: clamp(1.5rem, 5vw, 2.5rem);
+    margin-bottom: 2rem;
+    padding: 0 1rem;
+  }
+  
+  /* Countdown 3 Styles */
+  .reasons-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+    max-width: 90rem;
+    width: 100%;
+    padding: 0 1rem;
+  }
+  
+  .reason-card {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 1.25rem;
+    padding: 1.5rem;
+    flex: 1;
+    min-width: min(300px, 90vw);
+    max-width: 400px;
+    opacity: 0;
+    transform: translateY(50px);
+    transition: all 0.8s ease;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+  
+  .reason-card.active {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  .card-emoji {
+    font-size: clamp(2rem, 8vw, 3rem);
+    margin-bottom: 1rem;
+  }
+  
+  .reason-card h3 {
+    font-size: clamp(1.2rem, 4vw, 1.5rem);
+    margin-bottom: 0.75rem;
+  }
+  
+  .reason-card p {
+    opacity: 0.9;
+    line-height: 1.5;
+    font-size: clamp(0.9rem, 3vw, 1rem);
+  }
+  
+  /* Countdown 2 Styles */
+  .memories-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.5rem;
+    max-width: 70rem;
+    width: 100%;
+    padding: 0 1rem;
+  }
+  
+  .memory-card {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 1.25rem;
+    padding: 1.5rem;
+    flex: 1;
+    min-width: min(350px, 90vw);
+    max-width: 500px;
+    opacity: 0;
+    transform: scale(0.5);
+    transition: all 0.8s ease;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+  
+  .memory-card.active {
+    opacity: 1;
+    transform: scale(1);
+  }
+  
+  .memory-emoji {
+    font-size: clamp(2.5rem, 10vw, 4rem);
+    margin-bottom: 1rem;
+  }
+  
+  .memory-card h3 {
+    font-size: clamp(1.3rem, 5vw, 1.8rem);
+    margin-bottom: 1rem;
+  }
+  
+  .memory-card p {
+    font-size: clamp(0.95rem, 3.5vw, 1.05rem);
+    line-height: 1.6;
+  }
+  
+  /* Countdown 1 Styles */
+  .name-reveal {
+    font-size: clamp(2.5rem, 15vw, 4rem);
+    font-weight: bold;
+    color: #ffe66d;
+    margin: 2rem 0;
+    padding: 0 1rem;
+    opacity: 0;
+    transform: scale(0.5);
+    transition: all 1s ease;
+    text-shadow: 0 0 20px rgba(255, 230, 109, 0.5);
+    word-break: break-word;
+    overflow-wrap: break-word;
+    line-height: 1.2;
+  }
+  
+  .name-reveal.revealed {
+    opacity: 1;
+    transform: scale(1);
+    animation: glow 2s ease-in-out infinite alternate;
+  }
+  
+  @keyframes glow {
+    from { text-shadow: 0 0 10px rgba(255, 230, 109, 0.5); }
+    to { text-shadow: 0 0 30px rgba(255, 230, 109, 0.8); }
+  }
+  
+  .friend-description {
+    font-size: clamp(1rem, 4vw, 1.5rem);
+    max-width: min(500px, 90vw);
+    opacity: 0.9;
+    margin-top: 1rem;
+    padding: 0 1rem;
+  }
+  
+  /* Mobile Optimization */
+  @media (max-width: 768px) {
+    .countdown-screen {
+      padding: 0.5rem;
+      justify-content: flex-start;
+      padding-top: 3rem;
+    }
+    
+    .countdown-number {
+      margin-bottom: 0.5rem;
+    }
+    
+    .countdown-screen h1 {
+      margin-bottom: 2rem;
+    }
+    
+    .reasons-container,
+    .memories-container {
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+    }
+    
+    .reason-card,
+    .memory-card {
+      width: 95%;
+      min-width: unset;
+      max-width: 95%;
+      margin-bottom: 0.5rem;
+    }
+    
+    .name-reveal {
+      margin: 1rem 0;
+    }
+  }
+  
+  /* Small phones */
+  @media (max-width: 480px) {
+    .countdown-screen {
+      padding-top: 2rem;
+    }
+    
+    .reason-card,
+    .memory-card {
+      padding: 1rem;
+    }
+    
+    .card-emoji,
+    .memory-emoji {
+      margin-bottom: 0.5rem;
+    }
+  }
+  
+  /* Landscape orientation */
+  @media (max-height: 600px) and (orientation: landscape) {
+    .countdown-screen {
+      padding-top: 1rem;
+      justify-content: flex-start;
+    }
+    
+    .countdown-number {
+      font-size: 4rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    .countdown-screen h1 {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+    }
+    
+    .reasons-container,
+    .memories-container {
+      flex-direction: row;
+      gap: 0.5rem;
+    }
+    
+    .reason-card,
+    .memory-card {
+      padding: 0.75rem;
+      min-width: 200px;
+    }
+  }

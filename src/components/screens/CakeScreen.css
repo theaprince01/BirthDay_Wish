@@ -1,0 +1,319 @@
+/* CakeScreen.css - Responsive Version */
+.cake-screen {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    color: white;
+    text-align: center;
+    padding: 1rem;
+    overflow: hidden;
+  }
+  
+  .cake-screen h1 {
+    font-size: clamp(1.8rem, 6vw, 3rem);
+    margin-bottom: 0.5rem;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    padding: 0 1rem;
+  }
+  
+  .instruction {
+    font-size: clamp(1rem, 3.5vw, 1.2rem);
+    opacity: 0.9;
+    margin-bottom: 2rem;
+    padding: 0 1rem;
+  }
+  
+  .cake-container {
+    position: relative;
+    margin: 1rem 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .cake {
+    position: relative;
+    width: min(300px, 90vw);
+    height: min(200px, 60vw);
+    max-width: 400px;
+    max-height: 250px;
+  }
+  
+  .cake-base {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 60%;
+    background: linear-gradient(to bottom, #f8c291, #e55039);
+    border-radius: 1.25rem 1.25rem 0 0;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+  }
+  
+  .cake-top {
+    position: absolute;
+    top: 0;
+    left: 10%;
+    right: 10%;
+    height: 30%;
+    background: linear-gradient(to bottom, #ff9ff3, #f368e0);
+    border-radius: 50% 50% 0 0;
+  }
+  
+  .cake-icing {
+    position: absolute;
+    top: 25%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60%;
+    height: 15%;
+    background: #ff9ff3;
+    border-radius: 50%;
+  }
+  
+  .candle {
+    position: absolute;
+    bottom: 60%;
+    width: clamp(6px, 2vw, 12px);
+    height: clamp(40px, 15vw, 80px);
+    border-radius: 3px 3px 0 0;
+    cursor: pointer;
+    transform-origin: bottom;
+    transition: transform 0.3s ease;
+    z-index: 2;
+  }
+  
+  .candle:hover {
+    transform: scale(1.1);
+  }
+  
+  .candle-wick {
+    position: absolute;
+    top: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 2px;
+    height: 10px;
+    background: #333;
+    border-radius: 1px;
+  }
+  
+  .flame {
+    position: absolute;
+    top: -30px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: clamp(12px, 4vw, 20px);
+    height: clamp(25px, 8vw, 40px);
+    background: linear-gradient(to bottom, #ff9f00, #ff6b00);
+    border-radius: 50% 50% 20% 20%;
+    box-shadow: 0 0 20px #ff6b00;
+    opacity: 0;
+  }
+  
+  .flame.lit {
+    opacity: 1;
+    animation: flicker 0.5s ease-in-out infinite alternate;
+  }
+  
+  .candle.blown .flame {
+    animation: blowOut 0.5s ease forwards;
+  }
+  
+  @keyframes flicker {
+    0% { transform: translateX(-50%) scale(1) rotate(-2deg); }
+    100% { transform: translateX(-50%) scale(1.1) rotate(2deg); }
+  }
+  
+  @keyframes blowOut {
+    0% { transform: translateX(-50%) scale(1); opacity: 1; }
+    100% { transform: translateX(-50%) scale(0); opacity: 0; }
+  }
+  
+  .blow-all-btn {
+    margin-top: 2rem;
+    padding: clamp(0.75rem, 3vw, 1rem) clamp(1.5rem, 6vw, 2.5rem);
+    background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+    color: white;
+    border: none;
+    border-radius: 50px;
+    font-size: clamp(1rem, 3.5vw, 1.2rem);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    min-width: 200px;
+    max-width: 90vw;
+  }
+  
+  .blow-all-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(255, 107, 107, 0.3);
+  }
+  
+  .blow-all-btn:active {
+    transform: translateY(0);
+  }
+  
+  .candle-count {
+    margin-top: 1rem;
+    font-size: clamp(0.9rem, 3vw, 1.1rem);
+    opacity: 0.8;
+  }
+  
+  .wish-hint {
+    margin-top: 1rem;
+    font-style: italic;
+    opacity: 0.7;
+    max-width: min(300px, 90vw);
+    font-size: clamp(0.85rem, 2.5vw, 1rem);
+    padding: 0 1rem;
+  }
+  
+  /* Mobile Optimization */
+  @media (max-width: 768px) {
+    .cake-screen {
+      justify-content: flex-start;
+      padding-top: 3rem;
+    }
+    
+    .cake {
+      width: min(250px, 85vw);
+      height: min(150px, 50vw);
+    }
+    
+    .candle {
+      width: 5px;
+      height: 50px;
+    }
+  }
+  
+  /* Small phones */
+  @media (max-width: 480px) {
+    .cake-screen {
+      padding-top: 2rem;
+    }
+    
+    .cake-screen h1 {
+      font-size: 1.6rem;
+    }
+    
+    .instruction {
+      font-size: 0.9rem;
+      margin-bottom: 1.5rem;
+    }
+    
+    .blow-all-btn {
+      padding: 0.75rem 1.5rem;
+      font-size: 1rem;
+    }
+  }
+  
+  /* Landscape orientation */
+  @media (max-height: 600px) and (orientation: landscape) {
+    .cake-screen {
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      padding: 1rem;
+    }
+    
+    .cake-screen h1,
+    .instruction {
+      width: 100%;
+      margin-bottom: 0.5rem;
+    }
+    
+    .cake-container {
+      width: 50%;
+      margin: 0.5rem;
+    }
+    
+    .cake {
+      width: 200px;
+      height: 120px;
+    }
+    
+    .blow-all-btn {
+      margin-top: 0.5rem;
+      padding: 0.5rem 1rem;
+      font-size: 0.9rem;
+    }
+    
+    .candle-count,
+    .wish-hint {
+      width: 100%;
+      margin-top: 0.5rem;
+      font-size: 0.8rem;
+    }
+  }
+
+  /* Music Animation Styles */
+.music-note-animation {
+    position: absolute;
+    top: 20%;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    z-index: 100;
+    pointer-events: none;
+  }
+  
+  .music-note {
+    font-size: clamp(2rem, 6vw, 3rem);
+    animation: floatMusic 2s ease-in-out infinite;
+    opacity: 0;
+  }
+  
+  .music-note:nth-child(1) {
+    animation-delay: 0s;
+  }
+  
+  .music-note:nth-child(2) {
+    animation-delay: 0.5s;
+  }
+  
+  .music-note:nth-child(3) {
+    animation-delay: 1s;
+  }
+  
+  @keyframes floatMusic {
+    0% {
+      transform: translateY(0) rotate(0deg);
+      opacity: 0;
+    }
+    20% {
+      opacity: 1;
+    }
+    80% {
+      opacity: 1;
+    }
+    100% {
+      transform: translateY(-100px) rotate(360deg);
+      opacity: 0;
+    }
+  }
+  
+  .music-playing {
+    margin-top: 1rem;
+    font-size: clamp(1rem, 3vw, 1.2rem);
+    color: #ffe66d;
+    font-weight: bold;
+    animation: pulseMusic 1.5s infinite;
+    text-shadow: 0 0 10px rgba(255, 230, 109, 0.5);
+  }
+  
+  @keyframes pulseMusic {
+    0%, 100% {
+      transform: scale(1);
+      opacity: 1;
+    }
+    50% {
+      transform: scale(1.05);
+      opacity: 0.8;
+    }
+  }
